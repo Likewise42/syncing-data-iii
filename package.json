@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/Likewise42/syncing-data-iii#readme",
   "dependencies": {
-    "socket.io": "^1.7.2"
+    "express": "^4.15.2",
+    "socket.io": "^1.7.2",
+    "xxhashjs": "^0.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
