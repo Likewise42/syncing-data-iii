@@ -34,19 +34,24 @@ var keyDownHandler = function keyDownHandler(e) {
 var keyUpHandler = function keyUpHandler(e) {
   var keyPressed = e.which;
 
+  console.log("key up");
+
   // A OR LEFT
   if (keyPressed === 65 || keyPressed === 37) {
     playerChar.facingRight = false;
     playerChar.moving = false;
+    playerChar.changed = true;
   }
   // D OR RIGHT
   else if (keyPressed === 68 || keyPressed === 39) {
       playerChar.facingRight = true;
       playerChar.moving = false;
+      playerChar.changed = true;
     }
     //space
     else if (keyPressed === 32) {
         playerChar.jumping = false;
+        playerChar.changed = true;
       }
 };
 
@@ -61,7 +66,7 @@ var init = function init() {
   document.body.addEventListener('keydown', keyDownHandler);
   document.body.addEventListener('keyup', keyUpHandler);
 
-  document.body.addEventListener('onclick', function () {
+  document.body.addEventListener('click', function () {
     ctx.clearRect(0, 0, 500, 500);
   });
 
@@ -86,14 +91,11 @@ var update = function update(data) {
   var keys = Object.keys(charList);
   var characters = charList;
 
-  console.dir(charList);
-
   ctx.fillStyle = "red";
   for (var i = 0; i < keys.length; i++) {
     var char = characters[keys[i]];
 
-    ctx.rect(char.x, char.y, characterSize, characterSize);
-    ctx.fill();
+    ctx.fillRect(char.x, char.y - characterSize, characterSize, characterSize);
   }
   requestAnimationFrame(update);
 };

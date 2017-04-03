@@ -32,19 +32,24 @@ const keyDownHandler = (e) =>{
 const keyUpHandler = (e) => {
   var keyPressed = e.which;
   
+  console.log("key up");
+  
   // A OR LEFT
   if(keyPressed === 65 || keyPressed === 37) {
     playerChar.facingRight = false;
     playerChar.moving = false;
+    playerChar.changed = true;
   }
   // D OR RIGHT
   else if(keyPressed === 68 || keyPressed === 39) {
     playerChar.facingRight = true;
     playerChar.moving = false;
+    playerChar.changed = true;
   }
   //space
   else if(keyPressed === 32){
     playerChar.jumping = false;
+    playerChar.changed = true;
   }
 };
 
@@ -59,7 +64,7 @@ const init = () =>{
   document.body.addEventListener('keydown', keyDownHandler);
   document.body.addEventListener('keyup', keyUpHandler);
   
-  document.body.addEventListener('onclick',()=>{
+  document.body.addEventListener('click',()=>{
     ctx.clearRect(0,0,500,500);
   });
   

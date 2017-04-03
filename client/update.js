@@ -12,15 +12,11 @@ const update = (data) =>{
   const keys = Object.keys(charList);
   const characters = charList;
   
-  console.dir(charList);
-  
   ctx.fillStyle = "red";
   for(let i=0; i<keys.length; i++){
     const char = characters[keys[i]];
     
-    
-    ctx.rect(char.x,char.y,characterSize,characterSize);
-    ctx.fill();
+    ctx.fillRect(char.x,char.y-characterSize,characterSize,characterSize);
     
   }
   requestAnimationFrame(update);
