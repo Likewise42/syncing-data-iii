@@ -58,9 +58,9 @@ const simLoop = () =>{
     }
 
     if(char.moving){
-      if(char.facingRight){
+      if(char.facingRight && char.x < 450){
         char.x += speed;
-      }else{
+      }else if(char.x>0){
         char.x -= speed;
       }
     }
