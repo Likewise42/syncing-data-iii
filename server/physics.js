@@ -27,6 +27,11 @@ const deleteCharacter = (character) => {
 };
 module.exports.deleteCharacter = deleteCharacter;
 
+const updateCharacter = (hash, data) =>{
+  charList[hash].nextMove = data;
+};
+module.exports.updateCharacter = updateCharacter;
+
 const applyGravity = (character) =>{
   const char = character;
 
@@ -46,8 +51,9 @@ const simLoop = () =>{
       char.facingRight = char.nextMove.facingRight;
       char.moving = char.nextMove.moving;
 
-      if(char.y === 0){
+      if(char.y === 500){
         char.jumping = char.nextMove.jumping;
+        char.jumpTimer = 60;
       }
     }
 
@@ -60,8 +66,8 @@ const simLoop = () =>{
     }
 
     if(char.jumping){
-
-      char.y += jumpSpeed;
+      
+      char.y -= jumpSpeed;
 
       char.jumpTimer--;
       if(char.jumpTimer <= 0){

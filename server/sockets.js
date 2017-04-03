@@ -23,8 +23,8 @@ const setupSockets = (ioServer) => {
     socket.hash = hash;
 
     socket.on('update', (data) => {
-      nCharacter.nextMove = data;
-      physics.setCharacter(nCharacter);
+
+      physics.updateCharacter(socket.hash, data);
     });
 
     socket.on('disconnect', (data)=>{
